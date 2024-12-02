@@ -4,10 +4,18 @@ const fs = require('fs-extra');
 const pixelmatch = require('pixelmatch');
 const { merge } = require('lodash');
 const rimraf = require('rimraf').sync;
+const path = require('path');
 const getSnapshotFilename = require('../image/getSnapshotFilename');
 const getImageData = require('../image/getImageData');
 const { IMAGE_TYPE_ACTUAL } = require('../../constants');
 const { DEFAULT_IMAGE_CONFIG } = require('../../config');
+
+function getImageDataWithPath(props, devicePixelRatio) {
+  return {
+    ...getImageData(props, devicePixelRatio),
+    relativePath: (props.path) ? path.relative(process.cwd(), props.path) : '',
+  } 
+}
 
 function moveActualImageToSnapshotsDirectory({image, snapshotTitle, testFile} = {}) {
   if (image && image.path) {
@@ -22,7 +30,7 @@ function moveActualImageToSnapshotsDirectory({image, snapshotTitle, testFile} = 
 
 function createDiffObject(filename) {
   const imageObject = getImageObject(filename, false);
-  return getImageData(imageObject);
+  return getImageDataWithPath(imageObject);
 }
 
 /**

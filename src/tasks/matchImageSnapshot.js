@@ -9,6 +9,13 @@ const { getImageObject, compareImages, moveActualImageToSnapshotsDirectory, crea
 const resizeImage = require('../utils/image/resizeImage');
 const { IMAGE_TYPE_DIFF, IMAGE_TYPE_ACTUAL } = require('../constants');
 
+function getImageDataWithPath(props, devicePixelRatio) {
+  return {
+    ...getImageData(props, devicePixelRatio),
+    relativePath: (props.path) ? path.relative(process.cwd(), props.path) : '',
+  } 
+}
+
 async function matchImageSnapshot(data = {}) {
   const {
     commandName,
@@ -62,12 +69,12 @@ async function matchImageSnapshot(data = {}) {
     undefined : createDiffObject(diffFilename);
 
   const result = {
-    actual: getImageData(actual),
+    actual: getImageDataWithPath(actual),
     commandName,
     dataType,
     diff,
     exists,
-    expected: getImageData(expected),
+    expected: getImageDataWithPath(expected),
     passed: passed || autoPassed,
     snapshotFile: path.relative(process.cwd(), snapshotFile),
     snapshotTitle,
