@@ -3,6 +3,38 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## TODO
+Update or remove modules: 
+ - jimp
+    - phin
+ - rimraf
+ - request-promise-native
+ - rewire
+    - circular-json
+ - glob
+ - mkdirp
+ - eslint
+    - inflight
+
+Switch to vitest over jest
+   - is-accessor-descriptor
+    - is-data-descriptor
+     - w3c-hr-time
+      - source-map-url
+       - har-validator
+       - debug
+        - sane
+         - left-pad
+          - uuid
+           - domexception
+            - source-map-resolve
+             - request
+              - abab
+               - urix
+                - resolve-url
+Add Typescript
+Switch to ESM modules
+
 ## Releases
 ### [1.4.4](https://github.com/meinaart/cypress-plugin-snapshots/compare/v1.4.0...v1.4.4) - 2020-08-11
 - fixup screenshotConfig (thanks @shirotech)

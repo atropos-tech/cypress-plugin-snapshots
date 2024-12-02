@@ -1,6 +1,6 @@
 {
   "name": "cypress-plugin-snapshots",
-  "version": "1.4.4",
+  "version": "2.0.0",
   "description": "Cypress snapshot functionality for data",
   "homepage": "https://github.com/meinaart/cypress-plugin-snapshots",
   "repository": {
@@ -35,10 +35,8 @@
     "cy:open": "npm --prefix cypress run cy:open",
     "cy:run": "npm --prefix cypress run cy:run",
     "cy:verify": "npm --prefix cypress run cy:verify",
-    "jest": "jest",
     "lint": "eslint *.js",
-    "start": "node cypress/test-server/index.js",
-    "test": "jest & npm --prefix cypress run cy:run"
+    "start": "node cypress/test-server/index.js"
   },
   "dependencies": {
     "diff2html": "^2.7.0",
@@ -50,26 +48,20 @@
     "pixelmatch": "^4.0.2",
     "pngjs": "^3.3.3",
     "prettier": "^1.16.4",
-    "rand-token": "^1.0.1",
     "rimraf": "^2.6.3",
     "sanitize-filename": "^1.6.1",
-    "socket.io": "^2.2.0",
-    "socket.io-client": "^2.2.0",
     "source-map-support": "^0.5.10",
     "unidiff": "1.0.2"
   },
   "peerDependencies": {
-    "cypress": "^4.5.0"
+    "cypress": "^13.0.0"
   },
   "devDependencies": {
     "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-cypress": "^2.2.1",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "^22.3.0",
-    "jest": "^24.1.0",
-    "rewire": "^4.0.1"
+    "eslint-plugin-import": "^2.16.0"
   },
   "prettier": {
     "printWidth": 100,
@@ -83,12 +75,10 @@
       "prettier"
     ],
     "plugins": [
-      "cypress",
-      "jest"
+      "cypress"
     ],
     "env": {
-      "cypress/globals": true,
-      "jest/globals": true
+      "cypress/globals": true
     },
     "rules": {
       "no-param-reassign": 0,
@@ -118,14 +108,5 @@
   },
   "eslintIgnore": [
     "cypress/**/*"
-  ],
-  "jest": {
-    "testPathIgnorePatterns": [
-      "<rootDir>/examples/",
-      "<rootDir>/node_modules/",
-      "<rootDir>/cypress/"
-    ],
-    "clearMocks": true,
-    "testEnvironment": "node"
-  }
+  ]
 }

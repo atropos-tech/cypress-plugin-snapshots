@@ -65,7 +65,3 @@ function initCommands() {
 module.exports = {
   initCommands,
 };
-
-if (!process.env.JEST_WORKER_ID) {
-  initCommands();
-}
