@@ -2,14 +2,14 @@ const path = require('path');
 const fs = require('fs-extra');
 const unidiff = require('unidiff');
 const prettier = require('prettier');
-const { TYPE_JSON } = require('../../dataTypes');
+const { TYPE_JSON } = require('../../common/dataTypes');
 const {
   getConfig,
   shouldNormalize,
   getPrettierConfig
-} = require('../../config');
-const removeExcludedFields = require('../text/removeExcludedFields');
-const { formatJson, normalizeObject } = require('../json');
+} = require('../../common/config');
+const removeExcludedFields = require('./removeExcludedFields');
+const { formatJson, normalizeObject } = require('../../common/json');
 
 function subjectToSnapshot(subject, dataType = TYPE_JSON, config = {}) {
   let result = subject;

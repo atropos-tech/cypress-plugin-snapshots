@@ -1,6 +1,3 @@
-/* globals Cypress, before, after, cy */
-/* eslint-env browser */
-
 // Removes unused snapshots from snapshot file
 function cleanUpSnapshots() {
 

@@ -1,5 +1,5 @@
 const { merge } = require('lodash');
-const { updateSnapshot } = require('../utils/tasks/textSnapshots');
+const { updateSnapshot } = require('./textSnapshots');
 
 function saveTextSnapshot(data) {
   const {

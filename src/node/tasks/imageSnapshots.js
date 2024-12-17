@@ -5,10 +5,10 @@ const pixelmatch = require('pixelmatch');
 const { merge } = require('lodash');
 const rimraf = require('rimraf').sync;
 const path = require('path');
-const getSnapshotFilename = require('../image/getSnapshotFilename');
-const getImageData = require('../image/getImageData');
-const { IMAGE_TYPE_ACTUAL } = require('../../constants');
-const { DEFAULT_IMAGE_CONFIG } = require('../../config');
+const getSnapshotFilename = require('./getSnapshotFilename');
+const getImageData = require('../../common/getImageData');
+const { IMAGE_TYPE_ACTUAL } = require('../../common/constants');
+const { DEFAULT_IMAGE_CONFIG } = require('../../common/config');
 
 function getImageDataWithPath(props, devicePixelRatio) {
   return {

@@ -1,13 +1,13 @@
-const getTestTitle = require('../getTestTitle');
-const { getSnapshotTitle } = require('../snapshotTitles');
+const getTestTitle = require('./getTestTitle');
+const { getSnapshotTitle } = require('./snapshotTitles');
 const getSpec = require('./getSpec');
 const {
   getTestForTask,
   getSubject,
   isHtml,
-} = require('./index');
-const { COMMAND_MATCH_IMAGE_SNAPSHOT } = require('../../commands/commandNames');
-const { TYPE_IMAGE, TYPE_JSON, TYPE_HTML } = require('../../dataTypes');
+} = require('./utils');
+const { COMMAND_MATCH_IMAGE_SNAPSHOT } = require('./commandNames');
+const { TYPE_IMAGE, TYPE_JSON, TYPE_HTML } = require('../../common/dataTypes');
 
 function isImage(commandName) {
   return commandName === COMMAND_MATCH_IMAGE_SNAPSHOT;

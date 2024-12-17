@@ -1,13 +1,13 @@
 const { merge, cloneDeep } = require('lodash');
 const rimraf = require('rimraf').sync;
 const path = require('path');
-const { getConfig } = require('../config');
-const getSnapshotFilename = require('../utils/image/getSnapshotFilename');
-const getImageData = require('../utils/image/getImageData');
-const saveImageSnapshot = require('../save/saveImageSnapshot');
-const { getImageObject, compareImages, moveActualImageToSnapshotsDirectory, createDiffObject } = require('../utils/tasks/imageSnapshots');
-const resizeImage = require('../utils/image/resizeImage');
-const { IMAGE_TYPE_DIFF, IMAGE_TYPE_ACTUAL } = require('../constants');
+const { getConfig } = require('../../common/config');
+const getSnapshotFilename = require('./getSnapshotFilename');
+const getImageData = require('../../common/getImageData');
+const saveImageSnapshot = require('./saveImageSnapshot');
+const { getImageObject, compareImages, moveActualImageToSnapshotsDirectory, createDiffObject } = require('./imageSnapshots');
+const resizeImage = require('./resizeImage');
+const { IMAGE_TYPE_DIFF, IMAGE_TYPE_ACTUAL } = require('../../common/constants');
 
 function getImageDataWithPath(props, devicePixelRatio) {
   return {

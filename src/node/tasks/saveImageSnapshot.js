@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const rimraf = require('rimraf').sync;
-const getSnapshotFilename = require('../utils/image/getSnapshotFilename');
-const { IMAGE_TYPE_ACTUAL } = require('../constants');
+const getSnapshotFilename = require('./getSnapshotFilename');
+const { IMAGE_TYPE_ACTUAL } = require('../../common/constants');
 
 function saveImageSnapshot(data) {
   const {

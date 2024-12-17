@@ -2,19 +2,19 @@ const {
   merge,
   cloneDeep
 } = require('lodash');
-const applyReplace = require('../utils/text/applyReplace');
+const applyReplace = require('./applyReplace');
 const {
   createDiff,
   formatDiff,
   getSnapshot,
   subjectToSnapshot,
   updateSnapshot,
-} = require('../utils/tasks/textSnapshots');
-const getSnapshotFilename = require('../utils/text/getSnapshotFilename');
-const keepKeysFromExpected = require('../utils/text/keepKeysFromExpected');
+} = require('./textSnapshots');
+const getSnapshotFilename = require('./getSnapshotFilename');
+const keepKeysFromExpected = require('./keepKeysFromExpected');
 const {
   getConfig
-} = require('../config');
+} = require('../../common/config');
 
 function matchTextSnapshot({
   commandName,

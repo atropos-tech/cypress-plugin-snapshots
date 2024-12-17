@@ -1,9 +1,7 @@
-/* globals Cypress, before, after, cy */
-/* eslint-env browser */
-const { MATCH_TEXT } = require('../tasks/taskNames');
-const getTaskData = require('../utils/commands/getTaskData');
-const logMessage = require('../utils/commands/logMessage');
-const { NO_LOG } = require('../constants');
+const { MATCH_TEXT } = require('../../node/tasks/taskNames');
+const getTaskData = require('./getTaskData');
+const logMessage = require('./logMessage');
+const { NO_LOG } = require('../../common/constants');
 const { COMMAND_MATCH_SNAPSHOT: commandName } = require('./commandNames');
 
 function toMatchSnapshot(subject, options, isRetry = false) {

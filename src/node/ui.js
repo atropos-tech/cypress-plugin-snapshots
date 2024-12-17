@@ -1,5 +1,5 @@
 /* eslint-env browser */
-const { CONFIG_KEY } = require('./config');
+const { CONFIG_KEY } = require('../common/config');
 
 const {
   GET_FILE,
@@ -12,7 +12,7 @@ const {
   PATH_JS,
   PATH_BASE64_JS,
 } = require('./paths');
-const { NO_LOG } = require('./constants');
+const { NO_LOG } = require('../common/constants');
 
 const FILE_CACHE = {};
 

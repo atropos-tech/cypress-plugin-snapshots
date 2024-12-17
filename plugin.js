@@ -1,6 +1,6 @@
 
-const { initConfig, CONFIG_KEY } = require('./src/config');
-const tasks = require('./src/tasks/');
+const { initConfig, CONFIG_KEY } = require('./src/common/config');
+const tasks = require('./src/node/tasks/');
 
 /**
  * Initializes the plugin:

@@ -1,6 +1,4 @@
-/* globals Cypress, before, after, cy */
-/* eslint-env browser */
-const { CONFIG_KEY } = require('../../config');
+const { CONFIG_KEY } = require('../../common/config');
 
 /**
  * Check if config in `Cypress.env` is stringified JSON.

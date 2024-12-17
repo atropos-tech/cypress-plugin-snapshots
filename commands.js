@@ -4,11 +4,11 @@ const {
   merge,
   cloneDeep
 } = require('lodash');
-const { initUi } = require('./src/ui');
-const commands = require('./src/commands/index');
-const cleanUpSnapshots = require('./src/utils/commands/cleanupSnapshots');
-const getConfig = require('./src/utils/commands/getConfig');
-const { NO_LOG } = require('./src/constants');
+const { initUi } = require('./src/node/ui');
+const commands = require('./src/browser/commands/index');
+const cleanUpSnapshots = require('./src/browser/commands/cleanupSnapshots');
+const getConfig = require('./src/browser/commands/getConfig');
+const { NO_LOG } = require('./src/common/constants');
 
 function addCommand(commandName, method) {
   Cypress.Commands.add(commandName, {

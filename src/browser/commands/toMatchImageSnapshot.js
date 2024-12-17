@@ -1,12 +1,12 @@
 /* globals cy */
 /* eslint-env browser */
-const { MATCH_IMAGE } = require('../tasks/taskNames');
-const getTaskData = require('../utils/commands/getTaskData');
-const logMessage = require('../utils/commands/logMessage');
-const { NO_LOG } = require('../constants');
+const { MATCH_IMAGE } = require('../../node/tasks/taskNames');
+const getTaskData = require('./getTaskData');
+const logMessage = require('./logMessage');
+const { NO_LOG } = require('../../common/constants');
 const { COMMAND_MATCH_IMAGE_SNAPSHOT: commandName } = require('./commandNames');
-const getImageData = require('../utils/image/getImageData');
-const { getImageConfig, getScreenshotConfig, getCustomName, getCustomSeparator } = require('../config');
+const getImageData = require('../../common/getImageData');
+const { getImageConfig, getScreenshotConfig, getCustomName, getCustomSeparator } = require('../../common/config');
 
 function afterScreenshot(taskData) {
   return ($el, props) => {
