@@ -30,4 +30,4 @@ function cleanUpSnapshots() {
   // });
 }
 
-module.exports = cleanUpSnapshots;
+export default cleanUpSnapshots;

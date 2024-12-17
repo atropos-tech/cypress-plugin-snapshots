@@ -1,4 +1,4 @@
-const { CONFIG_KEY } = require('../../common/config');
+import { CONFIG_KEY } from '../../common/config';
 
 /**
  * Check if config in `Cypress.env` is stringified JSON.
@@ -25,4 +25,4 @@ function getConfig() {
   return config;
 }
 
-module.exports = getConfig;
+export default getConfig;

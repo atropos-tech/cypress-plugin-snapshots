@@ -1,12 +1,12 @@
-/* globals cy */
-/* eslint-env browser */
-const { MATCH_IMAGE } = require('../../node/tasks/taskNames');
-const getTaskData = require('./getTaskData');
-const logMessage = require('./logMessage');
-const { NO_LOG } = require('../../common/constants');
-const { COMMAND_MATCH_IMAGE_SNAPSHOT: commandName } = require('./commandNames');
-const getImageData = require('../../common/getImageData');
-const { getImageConfig, getScreenshotConfig, getCustomName, getCustomSeparator } = require('../../common/config');
+import { MATCH_IMAGE } from '../../common/taskNames';
+import getTaskData from './getTaskData';
+import logMessage from './logMessage';
+import { NO_LOG } from '../../common/constants';
+import { COMMAND_MATCH_IMAGE_SNAPSHOT as commandName } from './commandNames';
+import getImageData from '../../common/getImageData';
+import {
+ getImageConfig, getScreenshotConfig, getCustomName, getCustomSeparator 
+} from '../../common/config';
 
 function afterScreenshot(taskData) {
   return ($el, props) => {
@@ -66,4 +66,4 @@ async function toMatchImageSnapshot(subject, commandOptions, isRetry = false) {
     );
 }
 
-module.exports = toMatchImageSnapshot;
+export default toMatchImageSnapshot;

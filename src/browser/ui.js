@@ -3,7 +3,7 @@ const { CONFIG_KEY } = require('../common/config');
 
 const {
   GET_FILE,
-} = require('./tasks/taskNames');
+} = require('../common/taskNames');
 
 const {
   PATH_CSS,
@@ -11,7 +11,7 @@ const {
   PATH_DIFF_JS,
   PATH_JS,
   PATH_BASE64_JS,
-} = require('./paths');
+} = require('../common/paths');
 const { NO_LOG } = require('../common/constants');
 
 const FILE_CACHE = {};

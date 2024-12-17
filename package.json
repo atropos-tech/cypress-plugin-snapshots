@@ -85,6 +85,7 @@
       "no-use-before-define": 0,
       "global-require": 0,
       "no-underscore-dangle": 0,
+      "import/prefer-default-export": 0,
       "object-curly-newline": [
         "error",
         {

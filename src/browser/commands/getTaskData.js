@@ -1,11 +1,10 @@
-const getTestTitle = require('./getTestTitle');
-const { getSnapshotTitle } = require('./snapshotTitles');
-const getSpec = require('./getSpec');
-const {
-  getTestForTask,
-  getSubject,
-  isHtml,
-} = require('./utils');
+import getTestTitle from './getTestTitle';
+import { getSnapshotTitle } from './snapshotTitles';
+import getSpec from './getSpec';
+import {
+ getTestForTask, getSubject, isHtml 
+} from './utils';
+
 const { COMMAND_MATCH_IMAGE_SNAPSHOT } = require('./commandNames');
 const { TYPE_IMAGE, TYPE_JSON, TYPE_HTML } = require('../../common/dataTypes');
 
@@ -13,7 +12,7 @@ function isImage(commandName) {
   return commandName === COMMAND_MATCH_IMAGE_SNAPSHOT;
 }
 
-function getDataType({commandName, subject}) {
+function getDataType({ commandName, subject }) {
   if (isImage(commandName)) {
     return TYPE_IMAGE;
   }
@@ -22,21 +21,27 @@ function getDataType({commandName, subject}) {
 }
 
 async function getTaskData({
-    commandName,
-    options,
-    customName,
-    customSeparator,
-    subject: testSubject,
-    isRetry,
-  } = {}) {
+  commandName,
+  options,
+  customName,
+  customSeparator,
+  subject: testSubject,
+  isRetry,
+} = {}) {
   const subjectIsImage = isImage(commandName);
   const test = getTestForTask();
   const testTitle = getTestTitle(test);
   const spec = await getSpec();
   const testFile = spec.absolute;
-  const snapshotTitle = getSnapshotTitle(test, customName, customSeparator, subjectIsImage, isRetry);
+  const snapshotTitle = getSnapshotTitle(
+    test,
+    customName,
+    customSeparator,
+    subjectIsImage,
+    isRetry
+  );
   const subject = subjectIsImage ? testSubject : getSubject(testSubject);
-  const dataType = getDataType({commandName, subject: testSubject});
+  const dataType = getDataType({ commandName, subject: testSubject });
 
   return {
     commandName,
@@ -49,4 +54,4 @@ async function getTaskData({
   };
 }
 
-module.exports = getTaskData;
+export default getTaskData;

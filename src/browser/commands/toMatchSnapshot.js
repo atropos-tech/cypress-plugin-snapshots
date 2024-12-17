@@ -1,8 +1,8 @@
-const { MATCH_TEXT } = require('../../node/tasks/taskNames');
-const getTaskData = require('./getTaskData');
-const logMessage = require('./logMessage');
-const { NO_LOG } = require('../../common/constants');
-const { COMMAND_MATCH_SNAPSHOT: commandName } = require('./commandNames');
+import { MATCH_TEXT } from '../../common/taskNames';
+import getTaskData from './getTaskData';
+import logMessage from './logMessage';
+import { NO_LOG } from '../../common/constants';
+import { COMMAND_MATCH_SNAPSHOT as commandName } from './commandNames';
 
 function toMatchSnapshot(subject, options, isRetry = false) {
   return getTaskData({
@@ -29,4 +29,4 @@ function toMatchSnapshot(subject, options, isRetry = false) {
     );
 }
 
-module.exports = toMatchSnapshot;
+export default toMatchSnapshot;

@@ -1,7 +1,6 @@
-const { Base64 } = require('js-base64');
-const { cloneDeep } = require('lodash');
-const { URL_PREFIX } = require('../../common/constants');
-const { TYPE_IMAGE } = require('../../common/dataTypes');
+import { Base64 } from 'js-base64';
+import { URL_PREFIX  } from '../../common/constants';
+import { TYPE_IMAGE } from '../../common/dataTypes';
 
 function getErrorMessage(result) {
   if (result.dataType === TYPE_IMAGE) {
@@ -19,7 +18,7 @@ function cleanupImage(image) {
 }
 
 function getLogMessage(result) {
-  const linkResult = cloneDeep(result);
+  const linkResult = window.structuredClone(result);
   if (linkResult.isImage) {
     cleanupImage(linkResult.actual);
     cleanupImage(linkResult.expected);
@@ -64,4 +63,4 @@ function logMessage(result) {
   return subject;
 }
 
-module.exports = logMessage;
+export default logMessage;

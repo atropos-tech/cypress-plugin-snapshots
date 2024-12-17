@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const PATHS = require('../paths');
+const PATHS = require('../../common/paths');
 
 function getFile(filename) {
   if (Object.values(PATHS).indexOf(filename) === -1) {

@@ -1,14 +1,9 @@
-/* globals Cypress, before, after, cy */
-/* eslint-env browser */
-const {
-  merge,
-  cloneDeep
-} = require('lodash');
-const { initUi } = require('./src/node/ui');
-const commands = require('./src/browser/commands/index');
-const cleanUpSnapshots = require('./src/browser/commands/cleanupSnapshots');
-const getConfig = require('./src/browser/commands/getConfig');
-const { NO_LOG } = require('./src/common/constants');
+import { merge } from 'lodash';
+import { initUi } from './src/browser/ui';
+import commands from './src/browser/commands';
+import cleanUpSnapshots from './src/browser/commands/cleanupSnapshots';
+import getConfig from './src/browser/commands/getConfig';
+import { NO_LOG } from './src/common/constants';
 
 function addCommand(commandName, method) {
   Cypress.Commands.add(commandName, {
@@ -18,13 +13,13 @@ function addCommand(commandName, method) {
       return commandSubject;
     }
 
-    const options = merge({}, cloneDeep(getConfig()), taskOptions);
+    const options = merge({}, window.structuredClone(getConfig()), taskOptions);
     return cy.wrap(commandSubject, NO_LOG)
       .then((subject) => method(subject, options));
   });
 }
 
-function initCommands() {
+export function initCommands() {
   // Initialize config by getting it once
   getConfig();
 
@@ -61,7 +56,3 @@ function initCommands() {
   // Add commands
   Object.keys(commands).forEach(key => addCommand(key, commands[key]));
 }
-
-module.exports = {
-  initCommands,
-};

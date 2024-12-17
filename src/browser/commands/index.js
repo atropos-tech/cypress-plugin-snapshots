@@ -1,7 +1,10 @@
-const toMatchSnapshot = require('./toMatchSnapshot');
-const toMatchImageSnapshot = require('./toMatchImageSnapshot');
+import toMatchSnapshot from './toMatchSnapshot';
+import toMatchImageSnapshot from './toMatchImageSnapshot';
 
-module.exports = {
+// this gets iterated as an object in commands.js, so don't
+// export individually
+export default {
   toMatchSnapshot,
   toMatchImageSnapshot,
 }
+

@@ -1,9 +1,8 @@
-/* eslint-env browser */
-function getTest() {
+export function getTest() {
   return Cypress.mocha.getRunner().test;
 }
 
-function getTestForTask(test) {
+export function getTestForTask(test) {
   if (!test) {
     test = getTest();
   }
@@ -25,7 +24,7 @@ function isCollection(obj) {
   );
 }
 
-function getSubject(testSubject) {
+export function getSubject(testSubject) {
   if (testSubject) {
     if (isJQuery(testSubject)) {
       if (testSubject.length === 1) {
@@ -63,16 +62,9 @@ function isJQuery(subject) {
   );
 }
 
-function isHtml(subject) {
+export function isHtml(subject) {
   return isJQuery(subject) ||
           (Array.isArray(subject) && subject.length && isElement(subject[0])) ||
           isCollection(subject) ||
           isElement(subject);
-}
-
-module.exports = {
-  getSubject,
-  getTest,
-  getTestForTask,
-  isHtml
 }
