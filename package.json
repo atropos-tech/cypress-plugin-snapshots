@@ -7,16 +7,21 @@
     "type": "git",
     "url": "https://github.com/meinaart/cypress-plugin-snapshots.git"
   },
-  "types": "types/index.d.ts",
+  "types": "src/browser/commands/index.d.ts",
   "files": [
     "*.js",
     "*.md",
     "assets",
     "docs",
     "LICENSE",
-    "src",
-    "types"
+    "src"
   ],
+  "exports": {
+    "./commands": {
+      "require": "./commands.js",
+      "import": "./commands.js"
+    }
+  },
   "engines": {
     "node": ">=8.2.1"
   },
@@ -42,7 +47,7 @@
     "diff2html": "^2.7.0",
     "fs-extra": "^7.0.1",
     "image-size": "^0.7.2",
-    "jimp": "^0.16.1",
+    "jimp": "^1.6.0",
     "js-base64": "^2.5.1",
     "lodash": "^4.17.13",
     "pixelmatch": "^4.0.2",
