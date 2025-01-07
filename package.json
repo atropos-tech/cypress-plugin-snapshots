@@ -1,6 +1,6 @@
 {
   "name": "cypress-plugin-snapshots",
-  "version": "2.0.0-rc5",
+  "version": "2.0.0-rc6",
   "description": "Cypress snapshot functionality for data",
   "homepage": "https://github.com/meinaart/cypress-plugin-snapshots",
   "type": "module",
@@ -11,6 +11,7 @@
   "types": "./commands.d.ts",
   "files": [
     "*.js",
+    "*.ts",
     "*.md",
     "docs",
     "LICENSE",
