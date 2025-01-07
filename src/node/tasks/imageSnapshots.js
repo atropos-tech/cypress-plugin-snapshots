@@ -5,7 +5,7 @@ import pixelmatch  from 'pixelmatch';
 import { merge } from 'lodash-es';
 import { sync as rimraf } from 'rimraf';
 import path from 'path';
-import { getSnapshotFilename } from './getSnapshotFilename.js';
+import { getImageSnapshotFilename } from './getImageSnapshotFilename.js';
 import { getImageData } from '../../common/getImageData.js';
 import { IMAGE_TYPE_ACTUAL } from '../../common/constants.js';
 import { DEFAULT_IMAGE_CONFIG  } from '../../common/config.js';
@@ -19,7 +19,7 @@ function getImageDataWithPath(props, devicePixelRatio) {
 
 export function moveActualImageToSnapshotsDirectory({image, snapshotTitle, testFile} = {}) {
   if (image && image.path) {
-    const filename = getSnapshotFilename(testFile, snapshotTitle, IMAGE_TYPE_ACTUAL);
+    const filename = getImageSnapshotFilename(testFile, snapshotTitle, IMAGE_TYPE_ACTUAL);
     rimraf(filename);
     if (fs.existsSync(image.path)) {
       fs.moveSync(image.path, filename);
