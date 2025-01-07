@@ -4,9 +4,8 @@ import getSpec from './getSpec';
 import {
  getTestForTask, getSubject, isHtml 
 } from './utils';
-
-const { COMMAND_MATCH_IMAGE_SNAPSHOT } = require('./commandNames');
-const { TYPE_IMAGE, TYPE_JSON, TYPE_HTML } = require('../../common/dataTypes');
+import { COMMAND_MATCH_IMAGE_SNAPSHOT } from './commandNames';
+import { TYPE_HTML, TYPE_JSON, TYPE_IMAGE } from '../../common/dataTypes';
 
 function isImage(commandName) {
   return commandName === COMMAND_MATCH_IMAGE_SNAPSHOT;

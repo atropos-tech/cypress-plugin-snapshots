@@ -1,7 +1,7 @@
-const { merge, cloneDeep, clone } = require('lodash');
-const { TYPE_JSON } = require('./dataTypes');
+import { merge, cloneDeep, clone } from 'lodash-es';
+import { TYPE_JSON } from './dataTypes.js';
 
-const DEFAULT_SCREENSHOT_CONFIG = Object.freeze({
+export const DEFAULT_SCREENSHOT_CONFIG = Object.freeze({
   blackout: [],
   capture: 'fullPage',
   clip: null,
@@ -12,7 +12,7 @@ const DEFAULT_SCREENSHOT_CONFIG = Object.freeze({
   timeout: 30000,
 });
 
-const DEFAULT_IMAGE_CONFIG = Object.freeze({
+export const DEFAULT_IMAGE_CONFIG = Object.freeze({
   createDiffImage: true,
   resizeDevicePixelRatio: true,
   threshold: 0.1,
@@ -45,22 +45,22 @@ const DEFAULT_CONFIG = Object.freeze({
   retryDelay: 200,
 });
 
-const CONFIG_KEY = 'cypress-plugin-snapshots';
+export const CONFIG_KEY = 'cypress-plugin-snapshots';
 
 let config = cloneDeep(DEFAULT_CONFIG);
 
-function initConfig(initialConfig) {
+export function initConfig(initialConfig) {
   if (initialConfig) {
     config = merge(config, initialConfig);
   }
   return config;
 }
 
-function getConfig() {
+export function getConfig() {
   return config;
 }
 
-function getImageConfig(options = {}) {
+export function getImageConfig(options = {}) {
   return Object.keys(DEFAULT_IMAGE_CONFIG)
     .filter((key) => options.imageConfig && options.imageConfig[key] !== undefined)
     .reduce(
@@ -73,7 +73,7 @@ function getImageConfig(options = {}) {
 }
 
 
-function getScreenshotConfig(options = {}) {
+export function getScreenshotConfig(options = {}) {
   const screenshotConfig = Object.keys(DEFAULT_SCREENSHOT_CONFIG)
     .filter((key) => options.screenshotConfig && options.screenshotConfig[key] !== undefined)
     .reduce(
@@ -89,38 +89,25 @@ function getScreenshotConfig(options = {}) {
   return screenshotConfig;
 }
 
-function getCustomName(suppliedConfig) {
+export function getCustomName(suppliedConfig) {
   const cfg = suppliedConfig || getConfig();
   return cfg.name;
 }
 
-function getCustomSeparator(suppliedConfig) {
+export function getCustomSeparator(suppliedConfig) {
   const cfg = suppliedConfig || getConfig();
   return cfg.separator;
 }
 
-function shouldNormalize(dataType, suppliedConfig) {
+export function shouldNormalize(dataType, suppliedConfig) {
   const cfg = suppliedConfig && suppliedConfig.normalizeJson !== undefined ?
     suppliedConfig : getConfig();
   return dataType === TYPE_JSON && cfg.normalizeJson;
 }
 
-function getPrettierConfig(dataType, suppliedConfig) {
+export function getPrettierConfig(dataType, suppliedConfig) {
   const cfg = suppliedConfig && suppliedConfig.prettierConfig ?
     suppliedConfig : getConfig();
   return cfg.prettier && cfg.prettierConfig ? cfg.prettierConfig[dataType] : undefined;
 }
 
-module.exports = {
-  CONFIG_KEY,
-  DEFAULT_IMAGE_CONFIG,
-  DEFAULT_SCREENSHOT_CONFIG,
-  getConfig,
-  getImageConfig,
-  getPrettierConfig,
-  getScreenshotConfig,
-  getCustomName,
-  getCustomSeparator,
-  initConfig,
-  shouldNormalize,
-};

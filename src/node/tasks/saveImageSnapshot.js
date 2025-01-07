@@ -1,9 +1,9 @@
-const fs = require('fs-extra');
-const rimraf = require('rimraf').sync;
-const getSnapshotFilename = require('./getSnapshotFilename');
-const { IMAGE_TYPE_ACTUAL } = require('../../common/constants');
+import fs from 'fs-extra';
+import { sync as rimraf } from 'rimraf';
+import { getSnapshotFilename } from './getSnapshotFilename.js';
+import { IMAGE_TYPE_ACTUAL } from '../../common/constants.js';
 
-function saveImageSnapshot(data) {
+export function saveImageSnapshot(data) {
   const {
     testFile,
     snapshotTitle,
@@ -20,4 +20,3 @@ function saveImageSnapshot(data) {
   return data;
 }
 
-module.exports = saveImageSnapshot;

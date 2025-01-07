@@ -1,7 +1,7 @@
-const { merge } = require('lodash');
-const { updateSnapshot } = require('./textSnapshots');
+import { merge } from 'lodash-es';
+import { updateSnapshot } from './textSnapshots.js';
 
-function saveTextSnapshot(data) {
+export function saveTextSnapshot(data) {
   const {
     snapshotFile,
     snapshotTitle,
@@ -14,4 +14,3 @@ function saveTextSnapshot(data) {
   });
 }
 
-module.exports = saveTextSnapshot;

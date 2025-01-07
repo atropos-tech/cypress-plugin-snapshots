@@ -4,7 +4,7 @@
  * @param {Object} expected
  * @returns {Object}
  */
-function keepKeysFromExpected(subject, expected, keepConfig) {
+export function keepKeysFromExpected(subject, expected, keepConfig) {
   const cfg = keepConfig;
 
   if (Array.isArray(expected) && Array.isArray(subject)) {
@@ -33,4 +33,3 @@ function keepKeysFromExpected(subject, expected, keepConfig) {
   return subject;
 }
 
-module.exports = keepKeysFromExpected;

@@ -1,4 +1,2 @@
-module.exports = {
-  MATCH_IMAGE: 'cypress-plugin-snapshot:matchImage',
-  MATCH_TEXT: 'cypress-plugin-snapshot:matchText',
-};
+export const MATCH_IMAGE = 'cypress-plugin-snapshot:matchImage';
+export const MATCH_TEXT = 'cypress-plugin-snapshot:matchText';

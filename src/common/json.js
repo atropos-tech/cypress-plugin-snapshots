@@ -1,12 +1,12 @@
-function formatJson(subject) {
+export function formatJson(subject) {
   return JSON.stringify(subject, undefined, 2);
 }
 
-function formatNormalizedJson(subject) {
+export function formatNormalizedJson(subject) {
   return formatJson(normalizeObject(subject));
 }
 
-function normalizeObject(subject) {
+export function normalizeObject(subject) {
   if (Array.isArray(subject)) {
     return subject.map(normalizeObject);
   }
@@ -24,8 +24,3 @@ function normalizeObject(subject) {
   return subject;
 }
 
-module.exports = {
-  formatNormalizedJson,
-  formatJson,
-  normalizeObject,
-};

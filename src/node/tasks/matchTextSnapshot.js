@@ -1,22 +1,17 @@
-const {
-  merge,
-  cloneDeep
-} = require('lodash');
-const applyReplace = require('./applyReplace');
-const {
+import { merge, cloneDeep } from 'lodash-es';
+import { applyReplace } from './applyReplace.js';
+import {
   createDiff,
   formatDiff,
   getSnapshot,
   subjectToSnapshot,
   updateSnapshot,
-} = require('./textSnapshots');
-const getSnapshotFilename = require('./getSnapshotFilename');
-const keepKeysFromExpected = require('./keepKeysFromExpected');
-const {
-  getConfig
-} = require('../../common/config');
+} from './textSnapshots.js';
+import { getSnapshotFilename } from './getSnapshotFilename.js';
+import { keepKeysFromExpected } from './keepKeysFromExpected.js';
+import { getConfig } from '../../common/config.js';
 
-function matchTextSnapshot({
+export function matchTextSnapshot({
   commandName,
   dataType,
   options,
@@ -63,5 +58,3 @@ function matchTextSnapshot({
 
   return result;
 }
-
-module.exports = matchTextSnapshot;

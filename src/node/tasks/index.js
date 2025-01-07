@@ -1,11 +1,8 @@
-const {
-  MATCH_IMAGE,
-  MATCH_TEXT
-} = require('../../common/taskNames');
-const matchImageSnapshot = require('./matchImageSnapshot');
-const matchTextSnapshot = require('./matchTextSnapshot');
+import { MATCH_TEXT, MATCH_IMAGE } from '../../common/taskNames.js';
+import { matchImageSnapshot } from './matchImageSnapshot.js';
+import { matchTextSnapshot } from './matchTextSnapshot.js';
 
-module.exports = {
+export default {
   [MATCH_IMAGE]: matchImageSnapshot,
   [MATCH_TEXT]: matchTextSnapshot,
 }

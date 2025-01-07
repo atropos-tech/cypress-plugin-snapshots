@@ -1,4 +1,4 @@
-function getImageData(props, devicePixelRatio = 1) {
+export function getImageData(props, devicePixelRatio = 1) {
   return {
     height: props.height || props.dimensions && props.dimensions.height,
     path: props.path,
@@ -7,4 +7,3 @@ function getImageData(props, devicePixelRatio = 1) {
   };
 }
 
-module.exports = getImageData;

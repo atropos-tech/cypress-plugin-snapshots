@@ -3,7 +3,7 @@ import getTaskData from './getTaskData';
 import logMessage from './logMessage';
 import { NO_LOG } from '../../common/constants';
 import { COMMAND_MATCH_IMAGE_SNAPSHOT as commandName } from './commandNames';
-import getImageData from '../../common/getImageData';
+import { getImageData } from '../../common/getImageData';
 import {
  getImageConfig, getScreenshotConfig, getCustomName, getCustomSeparator 
 } from '../../common/config';

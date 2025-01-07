@@ -1,4 +1,4 @@
-function removeExcludedFields(subject, excludedFields) {
+export function removeExcludedFields(subject, excludedFields) {
   if (excludedFields) {
     if (Array.isArray(subject)) {
       return subject.map(item => removeExcludedFields(item, excludedFields));
@@ -17,4 +17,3 @@ function removeExcludedFields(subject, excludedFields) {
   return subject;
 }
 
-module.exports = removeExcludedFields;

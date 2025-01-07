@@ -1,14 +1,14 @@
-const { createHash } = require('crypto');
-const { PNG } = require('pngjs');
-const fs = require('fs-extra');
-const pixelmatch = require('pixelmatch');
-const { merge } = require('lodash');
-const rimraf = require('rimraf').sync;
-const path = require('path');
-const getSnapshotFilename = require('./getSnapshotFilename');
-const getImageData = require('../../common/getImageData');
-const { IMAGE_TYPE_ACTUAL } = require('../../common/constants');
-const { DEFAULT_IMAGE_CONFIG } = require('../../common/config');
+import { createHash } from 'crypto';
+import { PNG } from 'pngjs';
+import fs from 'fs-extra';
+import pixelmatch  from 'pixelmatch';
+import { merge } from 'lodash-es';
+import { sync as rimraf } from 'rimraf';
+import path from 'path';
+import { getSnapshotFilename } from './getSnapshotFilename.js';
+import { getImageData } from '../../common/getImageData.js';
+import { IMAGE_TYPE_ACTUAL } from '../../common/constants.js';
+import { DEFAULT_IMAGE_CONFIG  } from '../../common/config.js';
 
 function getImageDataWithPath(props, devicePixelRatio) {
   return {
@@ -17,7 +17,7 @@ function getImageDataWithPath(props, devicePixelRatio) {
   } 
 }
 
-function moveActualImageToSnapshotsDirectory({image, snapshotTitle, testFile} = {}) {
+export function moveActualImageToSnapshotsDirectory({image, snapshotTitle, testFile} = {}) {
   if (image && image.path) {
     const filename = getSnapshotFilename(testFile, snapshotTitle, IMAGE_TYPE_ACTUAL);
     rimraf(filename);
@@ -28,7 +28,7 @@ function moveActualImageToSnapshotsDirectory({image, snapshotTitle, testFile} = 
   }
 }
 
-function createDiffObject(filename) {
+export function createDiffObject(filename) {
   const imageObject = getImageObject(filename, false);
   return getImageDataWithPath(imageObject);
 }
@@ -42,7 +42,7 @@ function createDiffObject(filename) {
  * @param {string} filename - Path to image to read
  * @param {boolean} addHash - Add hash to result
  */
-function getImageObject(filename, addHash = true) {
+export function getImageObject(filename, addHash = true) {
   const exists = fs.existsSync(filename);
   const size = exists ? fs.statSync(filename).size : 0;
 
@@ -97,7 +97,7 @@ function compareImageSizes(expected, actual) {
     actual.height === expected.height;
 }
 
-function compareImages(expected, actual, diffFilename, config) {
+export function compareImages(expected, actual, diffFilename, config) {
   let passed = false;
   rimraf(diffFilename);
 
@@ -158,16 +158,9 @@ function compareImages(expected, actual, diffFilename, config) {
   return passed;
 }
 
-function saveImageSnapshot(data) {
+export function saveImageSnapshot(data) {
   rimraf(data.expected.path);
   rimraf(data.diff.path);
   fs.moveSync(data.actual.path, data.expected.path);
 }
 
-module.exports = {
-  compareImages,
-  createDiffObject,
-  getImageObject,
-  saveImageSnapshot,
-  moveActualImageToSnapshotsDirectory
-};

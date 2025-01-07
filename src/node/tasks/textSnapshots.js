@@ -1,17 +1,13 @@
-const path = require('path');
-const fs = require('fs-extra');
-const unidiff = require('unidiff');
-const prettier = require('prettier');
-const { TYPE_JSON } = require('../../common/dataTypes');
-const {
-  getConfig,
-  shouldNormalize,
-  getPrettierConfig
-} = require('../../common/config');
-const removeExcludedFields = require('./removeExcludedFields');
-const { formatJson, normalizeObject } = require('../../common/json');
+import path from 'path';
+import fs from 'fs-extra';
+import unidiff from 'unidiff';
+import prettier from 'prettier';
+import { TYPE_JSON } from '../../common/dataTypes.js';
+import { getConfig, shouldNormalize, getPrettierConfig } from '../../common/config.js';
+import { removeExcludedFields } from './removeExcludedFields.js';
+import { formatJson, normalizeObject } from '../../common/json.js';
 
-function subjectToSnapshot(subject, dataType = TYPE_JSON, config = {}) {
+export function subjectToSnapshot(subject, dataType = TYPE_JSON, config = {}) {
   let result = subject;
 
   if (typeof subject === 'object' && shouldNormalize(dataType, config)) {
@@ -40,14 +36,14 @@ function subjectToSnapshot(subject, dataType = TYPE_JSON, config = {}) {
   return result;
 }
 
-function formatDiff(subject) {
+export function formatDiff(subject) {
   if (typeof subject === 'object') {
     return formatJson(subject);
   }
   return String(subject || '');
 }
 
-function createDiff(expected, actual, snapshotTitle) {
+export function createDiff(expected, actual, snapshotTitle) {
   return unidiff.diffAsText(formatDiff(expected), formatDiff(actual), {
     aname: snapshotTitle,
     bname: snapshotTitle,
@@ -55,7 +51,7 @@ function createDiff(expected, actual, snapshotTitle) {
   });
 }
 
-function getSnapshot(filename, snapshotTitle, dataType = TYPE_JSON) {
+export function getSnapshot(filename, snapshotTitle, dataType = TYPE_JSON) {
   fs.ensureDirSync(path.dirname(filename));
 
   if (fs.existsSync(filename)) {
@@ -77,7 +73,7 @@ function readFile(filename) {
       delete require.cache[filename];
       content = require(filename); // eslint-disable-line import/no-dynamic-require
     } catch(ex) {
-      // eslint-disable-next-line no-console
+       
       console.warn(`Cannot read snapshot file "${filename}" as javascript, falling back to JSON parser:`, ex);
       const fileContents = fs.readFileSync(filename, 'utf8');
 
@@ -98,7 +94,7 @@ function readFile(filename) {
   return {};
 }
 
-function updateSnapshot(filename, snapshotTitle, subject, dataType = TYPE_JSON) {
+export function updateSnapshot(filename, snapshotTitle, subject, dataType = TYPE_JSON) {
   const store = readFile(filename);
   if (dataType === TYPE_JSON) {
     store[snapshotTitle] = JSON.parse(subject);
@@ -123,11 +119,3 @@ function updateSnapshot(filename, snapshotTitle, subject, dataType = TYPE_JSON) 
 
   fs.writeFileSync(filename, `${saveResult.trim()}\n`);
 }
-
-module.exports = {
-  createDiff,
-  formatDiff,
-  getSnapshot,
-  subjectToSnapshot,
-  updateSnapshot,
-};

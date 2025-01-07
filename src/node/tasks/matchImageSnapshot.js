@@ -1,13 +1,13 @@
-const { merge, cloneDeep } = require('lodash');
-const rimraf = require('rimraf').sync;
-const path = require('path');
-const { getConfig } = require('../../common/config');
-const getSnapshotFilename = require('./getSnapshotFilename');
-const getImageData = require('../../common/getImageData');
-const saveImageSnapshot = require('./saveImageSnapshot');
-const { getImageObject, compareImages, moveActualImageToSnapshotsDirectory, createDiffObject } = require('./imageSnapshots');
-const resizeImage = require('./resizeImage');
-const { IMAGE_TYPE_DIFF, IMAGE_TYPE_ACTUAL } = require('../../common/constants');
+import { merge, cloneDeep } from 'lodash-es';
+import { sync as rimraf } from 'rimraf';
+import path from 'path';
+import { getConfig } from '../../common/config.js';
+import { getImageSnapshotFilename } from './getImageSnapshotFilename.js';
+import { getImageData } from '../../common/getImageData.js';
+import { saveImageSnapshot } from './saveImageSnapshot.js';
+import { getImageObject, compareImages, moveActualImageToSnapshotsDirectory, createDiffObject } from './imageSnapshots.js';
+import { resizeImage } from './resizeImage.js';
+import { IMAGE_TYPE_DIFF, IMAGE_TYPE_ACTUAL } from '../../common/constants.js';
 
 function getImageDataWithPath(props, devicePixelRatio) {
   return {
@@ -16,7 +16,7 @@ function getImageDataWithPath(props, devicePixelRatio) {
   } 
 }
 
-async function matchImageSnapshot(data = {}) {
+export async function matchImageSnapshot(data = {}) {
   const {
     commandName,
     dataType,
@@ -32,10 +32,10 @@ async function matchImageSnapshot(data = {}) {
     throw new Error(`'image.devicePixelRatio' not defined`);
   }
 
-  const actualFilename = getSnapshotFilename(testFile, snapshotTitle, IMAGE_TYPE_ACTUAL);
-  const diffFilename = getSnapshotFilename(testFile, snapshotTitle, IMAGE_TYPE_DIFF);
+  const actualFilename = getImageSnapshotFilename(testFile, snapshotTitle, IMAGE_TYPE_ACTUAL);
+  const diffFilename = getImageSnapshotFilename(testFile, snapshotTitle, IMAGE_TYPE_DIFF);
   const config = merge({}, cloneDeep(getConfig()), options);
-  const snapshotFile = getSnapshotFilename(testFile, snapshotTitle);
+  const snapshotFile = getImageSnapshotFilename(testFile, snapshotTitle);
   const resized = options && options.resizeDevicePixelRatio && image.devicePixelRatio !== 1;
   if (resized) {
     await resizeImage(image.path, actualFilename, image.devicePixelRatio);
@@ -86,4 +86,3 @@ async function matchImageSnapshot(data = {}) {
   return result;
 }
 
-module.exports = matchImageSnapshot;

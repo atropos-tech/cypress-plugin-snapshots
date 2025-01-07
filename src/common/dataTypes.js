@@ -1,5 +1,3 @@
-module.exports = {
-  TYPE_HTML: 'html',
-  TYPE_IMAGE: 'image',
-  TYPE_JSON: 'json',
-};
+export const TYPE_HTML = 'html';
+export const TYPE_IMAGE = 'image';
+export const TYPE_JSON = 'json';

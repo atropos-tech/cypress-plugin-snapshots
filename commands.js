@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import { merge } from 'lodash-es';
 import commands from './src/browser/commands';
 import getConfig from './src/browser/commands/getConfig';
 import { NO_LOG } from './src/common/constants';

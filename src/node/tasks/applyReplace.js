@@ -7,7 +7,7 @@
  * @param {Object=} replace - Object containing replacements
  * @returns {Object}
  */
-function applyReplace(expected, replace) {
+export function applyReplace(expected, replace) {
   if (typeof expected !== 'object' || !replace) {
     return expected;
   }
@@ -24,4 +24,3 @@ function applyReplace(expected, replace) {
   return expected;
 }
 
-module.exports = applyReplace;

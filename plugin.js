@@ -1,6 +1,6 @@
 
-const { initConfig, CONFIG_KEY } = require('./src/common/config');
-const tasks = require('./src/node/tasks/');
+import { initConfig, CONFIG_KEY } from './src/common/config.js';
+import CYPRESS_TASKS from './src/node/tasks/index.js';
 
 /**
  * Initializes the plugin:
@@ -9,7 +9,7 @@ const tasks = require('./src/node/tasks/');
  * @param {Function} on - Method to register tasks
  * @param {Object} globalConfig - Object containing global Cypress config
  */
-function initPlugin(on, globalConfig = {
+export function initPlugin(on, globalConfig = {
 }) {
   const config = initConfig(globalConfig.env[CONFIG_KEY]);
 
@@ -29,9 +29,5 @@ function initPlugin(on, globalConfig = {
     return launchOptions;
   });
 
-  on('task', tasks);
+  on('task', CYPRESS_TASKS);
 }
-
-module.exports = {
-  initPlugin
-};

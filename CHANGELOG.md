@@ -15,8 +15,6 @@ Update or remove modules:
     - circular-json
  - glob
  - mkdirp
- - eslint
-    - inflight
 
 Switch to vitest over jest
    - is-accessor-descriptor

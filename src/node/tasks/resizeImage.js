@@ -1,8 +1,8 @@
-const Jimp = require('jimp');
-const fs = require('fs-extra');
-const imageSize = require('image-size');
+import imageSize from 'image-size';
+import fs from 'fs-extra';
+import { Jimp } from 'jimp';
 
-function resizeImage(filename, targetFile, devicePixelRatio) {
+export function resizeImage(filename, targetFile, devicePixelRatio) {
   if (devicePixelRatio !== 1 && fs.existsSync(filename)) {
     const dimensions = imageSize(filename);
     const height = Math.floor(dimensions.height / devicePixelRatio);
@@ -22,4 +22,3 @@ function resizeImage(filename, targetFile, devicePixelRatio) {
   return Promise.resolve(false);
 }
 
-module.exports = resizeImage;

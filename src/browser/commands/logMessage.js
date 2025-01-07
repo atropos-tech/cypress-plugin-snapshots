@@ -4,7 +4,7 @@ import { TYPE_IMAGE } from '../../common/dataTypes';
 
 function getErrorMessage(result) {
   if (result.dataType === TYPE_IMAGE) {
-    return `Snapshot images do not match.`;
+    return result.exists ? `Snapshot images do not match` : 'No existing snapshot image to compare against';
   }
 
   return `Snapshots do not match:\n${result.diff}`;
