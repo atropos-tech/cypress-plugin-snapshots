@@ -1,6 +1,6 @@
 {
   "name": "cypress-plugin-snapshots",
-  "version": "2.0.0-rc6",
+  "version": "2.0.0-rc7",
   "description": "Cypress snapshot functionality for data",
   "homepage": "https://github.com/meinaart/cypress-plugin-snapshots",
   "type": "module",
@@ -61,7 +61,7 @@
     "unidiff": "1.0.2"
   },
   "peerDependencies": {
-    "cypress": "^13.0.0"
+    "cypress": "^13 || ^14"
   },
   "devDependencies": {
     "eslint": "^9.17.0",
