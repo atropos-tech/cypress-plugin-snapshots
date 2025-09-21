@@ -1,6 +1,6 @@
 {
   "name": "cypress-plugin-snapshots",
-  "version": "2.0.0-rc8",
+  "version": "2.0.0-rc9",
   "description": "Cypress snapshot functionality for data",
   "homepage": "https://github.com/meinaart/cypress-plugin-snapshots",
   "type": "module",
@@ -24,7 +24,7 @@
     },
     "./plugin": {
       "import": "./plugin.js",
-      "default": "./dist/cypress/setup.js"
+      "default": "./plugin.js"
     }
   },
   "engines": {
