@@ -23,7 +23,8 @@
       "types": "./commands.d.ts"
     },
     "./plugin": {
-      "import": "./plugin.js"
+      "import": "./plugin.js",
+      "default": "./dist/cypress/setup.js"
     }
   },
   "engines": {
